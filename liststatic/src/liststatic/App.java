@@ -7,8 +7,9 @@ public class App {
 		lista.adiciona("Salgueiro");
 		lista.adiciona("Cabrobó");
 		lista.adiciona("Salgueiro");
+		
 		System.out.println("Tamanho: " + lista.getTamanho());
-		System.out.println("lista: " +lista.buscaBasica(0));
+		System.out.println("lista: " +lista.buscaBasica(1));
 		System.out.println("Verifica " + lista.verifica("salgueirO"));
 		System.out.println("posição da segunda " + lista.verificaOcorrecia("salgueiro"));
 
