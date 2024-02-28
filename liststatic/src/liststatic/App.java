@@ -12,7 +12,6 @@ public class App {
 		System.out.println("lista: " +lista.buscaBasica(1));
 		System.out.println("Verifica " + lista.verifica("salgueirO"));
 		System.out.println("posição da segunda " + lista.verificaOcorrecia("salgueiro"));
-
 	}
 
 }

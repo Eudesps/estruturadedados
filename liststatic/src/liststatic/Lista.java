@@ -85,6 +85,36 @@ public class Lista {
 		return 0;
 	}
 	
+	public boolean adicionaQualquerPosicao(int posicao, String elemento) {
+		try {
+			if(!elemento.equals(null) && (posicao <= tamanho)) {
+				if(this.tamanho >= this.elementos.length) {
+					this.aumentaCapacidade();
+				}				
+				for (int i = this.tamanho-1; i >= posicao; i--) {
+					this.elementos[i+1] = this.elementos[i];
+				}
+				this.elementos[posicao]=elemento;								
+				this.tamanho++;
+				return true;			
+			}else {
+				return false;
+			}
+		} catch (Exception e) {
+			System.out.println("ERRO: Não foi possível inserir no vetor");
+			System.out.println("Posição inválida ou tipo de dado não ceito.");			
+			return false;
+		}
+	}
+	
+	public void aumentaCapacidade() {
+		String[] elementosNovos = new String[this.elementos.length*2];
+		for(int i=0; i<this.elementos.length; i++) {
+			elementosNovos[i] = this.elementos[i];
+		}
+		this.elementos = elementosNovos;
+	}
+	
 	public int tamanho(){
 		return this.tamanho;
 	}
