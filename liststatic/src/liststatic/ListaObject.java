@@ -1,15 +1,15 @@
 package liststatic;
 
-public class Lista {
-	private String[] elementos;
+public class ListaObject {
+	private Object[] elementos;
 	private int tamanho;
 	
-	public Lista(int capacidade) {
-		this.elementos = new String[capacidade];
+	public ListaObject(int capacidade) {
+		this.elementos = new Object[capacidade];
 		this.tamanho = 0;
 	}
 	
-	public void adicionar(String elemento) {
+	public void adicionar(Object elemento) {
 		for(int i=0; i < elementos.length; i++) {
 			if(elementos[i].equals(null)) {
 				this.elementos[i] = elemento;
@@ -17,8 +17,7 @@ public class Lista {
 			}
 		}
 	}
-	/*
-	public boolean adiciona(String elemento) {
+	public boolean adiciona(Object elemento) {
 		if(this.tamanho < this.elementos.length) {
 			this.elementos[this.tamanho] = elemento;
 			this.tamanho++;
@@ -58,7 +57,7 @@ public class Lista {
 		return null;
 	}
 	
-	public String buscaBasica(int posicao) {
+	public Object buscaBasica(int posicao) {
 		try {
 			return this.elementos[posicao];
 		}catch(Exception e){
@@ -66,37 +65,27 @@ public class Lista {
 		}
 	}
 	
-	public int verifica(String elemento) {
+	public int verifica(Object elemento) {
 		for(int i = 0 ; i < this.tamanho;i++) {
-			if(elemento.equalsIgnoreCase(this.elementos[i])) return i;
+			if(elemento.equals(this.elementos[i])) return i;
 		}
 		return -1;
 	}
 	
-	public int verificaOcorrecia(String elemento) {
+	public int verificaOcorrecia(Object elemento) {
 		int contador = 0;
 		for(int i = 0 ; i < this.tamanho;i++) {
-			if(elemento.equalsIgnoreCase(this.elementos[i])) {
+			if(elemento.equals(this.elementos[i])) {
 				contador++;
 				if(contador == 2) {
 					return i;
 				}
 			}
 		}
-		return -1;
+		return 0;
 	}
 	
-	public int verificaUltimaOcorrecia(String elemento) {
-		//int index = 0;
-		for(int i = this.tamanho -1 ; i >= 0;i--) {
-			if(elemento.equalsIgnoreCase(this.elementos[i])) {
-				return i;
-			}
-		}
-		return -1;
-	}
-	
-	public boolean adicionaQualquerPosicao(int posicao, String elemento) {
+	public boolean adicionaQualquerPosicao(int posicao, Object elemento) {
 		try {
 			if(!elemento.equals(null) && (posicao <= tamanho)) {
 				if(this.tamanho >= this.elementos.length) {
@@ -119,17 +108,16 @@ public class Lista {
 	}
 	
 	public void aumentaCapacidade() {
-		String[] elementosNovos = new String[this.elementos.length*2];
+		Object[] elementosNovos = new Object[this.elementos.length*2];
 		for(int i=0; i<this.elementos.length; i++) {
 			elementosNovos[i] = this.elementos[i];
 		}
 		this.elementos = elementosNovos;
 	}
 	
-	//remove com base na posição informoda 
 	public void remove(int posicao) {		
 		if((posicao >= 0) && (posicao < this.tamanho)) {
-			for(int i = posicao; i < this.tamanho; i++) {
+			for(int i=posicao; i < this.tamanho; i++) {
 				this.elementos[i] = this.elementos[i+1];
 			}
 			this.tamanho--;
@@ -139,19 +127,8 @@ public class Lista {
 		}		
 	}
 	
-	public void removerTodosElementos() {
-		//Opção 1
-		//this.tamanho = 0;
-		
-		//Opção 2
-		for(int i = 0; i < this.tamanho; i++) {
-			this.elementos[i] = null;
-		}
-		this.tamanho = 0;
-	}
-	
-	//remove com base no elemento informado
-	public boolean removeElemento(String elemento) {		
+
+	public boolean removeElemento(Object elemento) {		
 		int posicao = this.verifica(elemento);
 		if(posicao > -1) {
 			for(int i=posicao; i<tamanho-1;i++) {
@@ -167,11 +144,11 @@ public class Lista {
 		return this.tamanho;
 	}
 	
-	public String[] getElementos() {
+	public Object[] getElementos() {
 		return elementos;
 	}
 
-	public void setElementos(String[] elementos) {
+	public void setElementos(Object[] elementos) {
 		this.elementos = elementos;
 	}
 	
@@ -182,9 +159,5 @@ public class Lista {
 	public void setTamanho(int tamanho) {
 		this.tamanho = tamanho;
 	}
-	
-	public int capacidade() {
-		int capacidade = this.elementos.length;
-		return capacidade;
-	}
+
 }
