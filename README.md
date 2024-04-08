@@ -1,2 +1,3 @@
 # Estudos - Estrutura de dados
-- Lista estática
+- Listas estáticas
+- Listas simplesmente encadeadas
